@@ -44,3 +44,58 @@ You don’t have to ever use `eject`. The curated feature set is suitable for sm
 You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
 To learn React, check out the [React documentation](https://reactjs.org/).
+
+```
+<Button
+    isLoading={isLoading}
+    loadingText="Loading"
+    colorScheme="teal"
+    variant="outline"
+    spinnerPlacement="start"
+    onClick={() => {
+        setIsLoading(true);
+        fetch(new URL(`${_data.API}/tasks`))
+            .then((e) => e.json())
+            .then((data) => {
+                setIsLoading(false);
+                toast({
+                    title: "Fetch.",
+                    description: "Good to Fetch.",
+                    status: "success",
+                    duration: 9000,
+                    isClosable: true,
+                });
+            })
+            .catch((err) => {
+                setIsLoading(false);
+                toast({
+                    title: "Failed to Fetch.",
+                    description: err.message,
+                    status: "error",
+                    duration: 9000,
+                    isClosable: true,
+                });
+            });
+    }}
+>
+    Submit
+</Button>
+```
+
+```
+<ScaleFade
+    initialScale={0.8}
+    in={Boolean(tabIndex === i)}
+>
+    <Box
+        p="2rem"
+        color="white"
+        mt="4"
+        bg="teal.500"
+        rounded="md"
+        shadow="md"
+    >
+        {el.page()}
+    </Box>
+</ScaleFade>
+```
