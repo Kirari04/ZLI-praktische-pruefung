@@ -23,7 +23,7 @@ import {
     AlertDialogHeader,
 } from "@chakra-ui/react";
 import { ArrowBackIcon, PlusSquareIcon } from "@chakra-ui/icons";
-import { useEffect, useState } from "react";
+import { RefObject, useEffect, useState } from "react";
 import { Link, Params, useNavigate, useParams } from "react-router-dom";
 import {
     deleteWorkItem_fn,
@@ -261,7 +261,11 @@ export default function ListWorkPage() {
                     </Tbody>
                 </Table>
             </TableContainer>
-            <AlertDialog isOpen={isOpen} onClose={onClose}>
+            <AlertDialog
+                isOpen={isOpen}
+                leastDestructiveRef={cancelRef as any}
+                onClose={onClose}
+            >
                 <AlertDialogOverlay>
                     <AlertDialogContent>
                         <AlertDialogHeader fontSize="lg" fontWeight="bold">
