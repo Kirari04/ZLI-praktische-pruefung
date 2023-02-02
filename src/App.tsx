@@ -25,6 +25,9 @@ import ShowWork from "./pages/ShowWork";
 import AddWork from "./pages/AddWork";
 
 import _data from "./_data";
+import LoginPage from "./pages/Login";
+import React from "react";
+import { UserContext } from "./hooks/_state";
 
 const router = createBrowserRouter([
     {
@@ -37,21 +40,37 @@ const router = createBrowserRouter([
                 element: <Index />,
             },
             {
+                path: "login/",
+                element: <LoginPage />,
+            },
+            {
                 path: "aufgaben/",
                 element: <ShowWorks />,
             },
             {
                 path: "aufgabe/:workId",
-                element: <ShowWork />
+                element: <ShowWork />,
             },
             {
                 path: "aufgabe/hinzufuegen",
-                element: <AddWork />
+                element: <AddWork />,
             },
         ],
     },
 ]);
 
-export default function App() {
-    return <RouterProvider router={router} />;
+function App() {
+    const [isAuth, setIsAuth] = useState(false);
+    const setIsAuthState = (isAuth: boolean) => {
+        setIsAuth(isAuth);
+    };
+    return (
+        <UserContext.Provider
+            value={{ isAuth: isAuth, setIsAuth: setIsAuthState }}
+        >
+            <RouterProvider router={router} />
+        </UserContext.Provider>
+    );
 }
+
+export { App };

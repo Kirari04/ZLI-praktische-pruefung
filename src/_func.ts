@@ -1,15 +1,11 @@
 import axios from "axios";
+import React from "react";
 import _data from "./_data";
 
-const globalConfig = {
-    timeout: 5000
-}
-
-function LoadWorkItems_fn(
-    path: string,
-): Promise<LoadWorkItems> {
+function LoadWorkItems_fn(path: string): Promise<LoadWorkItems> {
     return new Promise((resolve, reject) => {
-        axios.get(`${_data.API}${path}`, globalConfig)
+        axios
+            .get(`${_data.API}${path}`, _data.axios)
             .then((data) => {
                 resolve({
                     success: true,
@@ -27,12 +23,10 @@ function LoadWorkItems_fn(
     });
 }
 
-function loadWorkItem_fn(
-    path: string,
-): Promise<LoadWorkItem> {
+function loadWorkItem_fn(path: string): Promise<LoadWorkItem> {
     return new Promise((resolve, reject) => {
         axios
-            .get(`${_data.API}${path}`, globalConfig)
+            .get(`${_data.API}${path}`, _data.axios)
             .then((data) => {
                 resolve({
                     success: true,
@@ -57,18 +51,22 @@ function updateWorkItem_fn(
 ): Promise<LoadWorkItem> {
     return new Promise((resolve, reject) => {
         axios
-            .put(`${_data.API}${path}`, {
-                id: id,
-                completed: completed,
-                title: title
-            }, globalConfig)
+            .put(
+                `${_data.API}${path}`,
+                {
+                    id: id,
+                    completed: completed,
+                    title: title,
+                },
+                _data.axios
+            )
             .then((data) => {
                 resolve({
                     success: true,
                     data: {
                         id: id,
                         completed: completed,
-                        title: title
+                        title: title,
                     },
                     error: null,
                 });
@@ -83,13 +81,10 @@ function updateWorkItem_fn(
     });
 }
 
-function deleteWorkItem_fn(
-    path: string,
-    id: number,
-): Promise<LoadWorkItem> {
+function deleteWorkItem_fn(path: string, id: number): Promise<LoadWorkItem> {
     return new Promise((resolve, reject) => {
         axios
-            .delete(`${_data.API}${path}/${id}`, globalConfig)
+            .delete(`${_data.API}${path}/${id}`, _data.axios)
             .then((data) => {
                 resolve({
                     success: true,
@@ -114,17 +109,21 @@ function addWorkItem_fn(
 ): Promise<LoadWorkItem> {
     return new Promise((resolve, reject) => {
         axios
-            .post(`${_data.API}${path}`, {
-                completed: completed,
-                title: title
-            }, globalConfig)
+            .post(
+                `${_data.API}${path}`,
+                {
+                    completed: completed,
+                    title: title,
+                },
+                _data.axios
+            )
             .then((data) => {
                 resolve({
                     success: true,
                     data: {
                         id: data.data.id,
                         completed: data.data.completed,
-                        title: data.data.title
+                        title: data.data.title,
                     },
                     error: null,
                 });
@@ -139,4 +138,10 @@ function addWorkItem_fn(
     });
 }
 
-export { LoadWorkItems_fn, loadWorkItem_fn, updateWorkItem_fn, addWorkItem_fn, deleteWorkItem_fn };
+export {
+    LoadWorkItems_fn,
+    loadWorkItem_fn,
+    updateWorkItem_fn,
+    addWorkItem_fn,
+    deleteWorkItem_fn,
+};

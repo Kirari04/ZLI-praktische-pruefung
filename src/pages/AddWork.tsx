@@ -32,7 +32,7 @@ export default function AddWorkPage() {
         setIsLoadingButton(true);
         if (title) {
             let res = await addWorkItem_fn("/tasks", completed, title);
-            
+
             if (!res.success) {
                 toast({
                     title: "Failed to Fetch.",
@@ -42,7 +42,7 @@ export default function AddWorkPage() {
                     isClosable: true,
                 });
             } else {
-                navigate(`/aufgabe/${res.data?.id}`)
+                navigate(`/aufgabe/${res.data?.id}`);
                 toast({
                     title: "Success",
                     status: "success",
@@ -50,7 +50,7 @@ export default function AddWorkPage() {
                     isClosable: true,
                 });
             }
-        }else{
+        } else {
             toast({
                 title: "Fill out the title",
                 status: "error",
@@ -74,7 +74,12 @@ export default function AddWorkPage() {
             <form action="#" onSubmit={AddData}>
                 <Stack>
                     <label htmlFor="title">
-                        <Stack direction={'row'} gap={4} align={"center"} justify={'start'}>
+                        <Stack
+                            direction={"row"}
+                            gap={4}
+                            align={"center"}
+                            justify={"start"}
+                        >
                             <p>Title</p>
                             <Input
                                 autoFocus
@@ -87,7 +92,11 @@ export default function AddWorkPage() {
                         </Stack>
                     </label>
                     <label htmlFor="completed">
-                        <Stack direction={"row"} gap={4} alignContent={'center'}>
+                        <Stack
+                            direction={"row"}
+                            gap={4}
+                            alignContent={"center"}
+                        >
                             <p>Completed</p>
                             <Checkbox
                                 id="completed"
@@ -95,7 +104,11 @@ export default function AddWorkPage() {
                             />
                         </Stack>
                     </label>
-                    <Button type="submit" colorScheme={"blue"} isLoading={isLoadingButton}>
+                    <Button
+                        type="submit"
+                        colorScheme={"blue"}
+                        isLoading={isLoadingButton}
+                    >
                         Add
                     </Button>
                 </Stack>
