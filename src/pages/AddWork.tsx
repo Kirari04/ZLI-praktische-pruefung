@@ -77,6 +77,7 @@ export default function AddWorkPage() {
                         <Stack direction={'row'} gap={4} align={"center"} justify={'start'}>
                             <p>Title</p>
                             <Input
+                                autoFocus
                                 id="title"
                                 variant="filled"
                                 placeholder="Fische giessen"

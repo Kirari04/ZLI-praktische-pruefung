@@ -31,16 +31,14 @@ import {
     updateWorkItem_fn,
 } from "../_func";
 import React from "react";
+import DeleteWorkButtonComponent from "../components/DeleteWorkButton";
 
 export default function ListWorkPage() {
     const toast = useToast();
     let fin = false;
-    const navigate = useNavigate();
     const [isLoading, setIsLoading] = useState(false);
     const [isLoadingButton, setIsLoadingButton] = useState(false);
     const [data, setData] = useState<null | LoadWorkItem>(null);
-    const { isOpen, onOpen, onClose } = useDisclosure();
-    const cancelRef = React.useRef();
 
     const { workId } = useParams();
     const loadData = async () => {
@@ -102,31 +100,6 @@ export default function ListWorkPage() {
                     error: data.error,
                     data: res.data,
                 });
-            }
-        }
-    };
-    const deleteData = async () => {
-        if (data?.success && data.data) {
-            setIsLoadingButton(true);
-            let res = await deleteWorkItem_fn("/task", data?.data?.id);
-            setIsLoadingButton(false);
-            if (!res.success) {
-                toast({
-                    title: "Failed to Fetch.",
-                    description: res.error,
-                    status: "error",
-                    duration: 9000,
-                    isClosable: true,
-                });
-            } else {
-                toast({
-                    title: "Success",
-                    description: `${data.data.title} wurde gelöscht`,
-                    status: "success",
-                    duration: 2000,
-                    isClosable: true,
-                });
-                navigate("/aufgaben");
             }
         }
     };
@@ -248,50 +221,17 @@ export default function ListWorkPage() {
                                     </Button>
                                 </Td>
                                 <Td>
-                                    <Button
-                                        onClick={onOpen}
-                                        colorScheme={"red"}
-                                        isLoading={isLoadingButton}
-                                    >
-                                        Delete
-                                    </Button>
+                                    {data.success && data.data ? (
+                                        <DeleteWorkButtonComponent
+                                            data={data}
+                                        />
+                                    ) : null}
                                 </Td>
                             </Tr>
                         ) : null}
                     </Tbody>
                 </Table>
             </TableContainer>
-            <AlertDialog
-                isOpen={isOpen}
-                leastDestructiveRef={cancelRef as any}
-                onClose={onClose}
-            >
-                <AlertDialogOverlay>
-                    <AlertDialogContent>
-                        <AlertDialogHeader fontSize="lg" fontWeight="bold">
-                            Delete Work
-                        </AlertDialogHeader>
-
-                        <AlertDialogBody>
-                            Are you sure? You can't undo this action afterwards.
-                        </AlertDialogBody>
-
-                        <AlertDialogFooter>
-                            <Button onClick={onClose}>Cancel</Button>
-                            <Button
-                                colorScheme="red"
-                                onClick={() => {
-                                    onClose();
-                                    deleteData();
-                                }}
-                                ml={3}
-                            >
-                                Delete
-                            </Button>
-                        </AlertDialogFooter>
-                    </AlertDialogContent>
-                </AlertDialogOverlay>
-            </AlertDialog>
         </>
     );
 }

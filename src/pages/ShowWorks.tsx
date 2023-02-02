@@ -17,6 +17,7 @@ import {
 } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import DeleteWorkButtonComponent from "../components/DeleteWorkButton";
 import { LoadWorkItems_fn } from "../_func";
 
 export default function ListWorkPage() {
@@ -84,6 +85,7 @@ export default function ListWorkPage() {
                             <Th>ID</Th>
                             <Th>Title</Th>
                             <Th>Completed</Th>
+                            <Th colSpan={2}></Th>
                         </Tr>
                     </Thead>
                     <Tbody>
@@ -112,6 +114,18 @@ export default function ListWorkPage() {
                                             Edit
                                         </Button>
                                     </Link>
+                                </Td>
+                                <Td>
+                                    {data.success && data.data ? (
+                                        <DeleteWorkButtonComponent
+                                            data={{
+                                                success: true,
+                                                error: '',
+                                                data: el
+                                            }}
+                                            callback={reloadData}
+                                        />
+                                    ) : null}
                                 </Td>
                             </Tr>
                         ))}
