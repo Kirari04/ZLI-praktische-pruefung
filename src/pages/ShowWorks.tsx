@@ -1,3 +1,4 @@
+import { PlusSquareIcon } from "@chakra-ui/icons";
 import {
     Table,
     Thead,
@@ -11,9 +12,12 @@ import {
     Spinner,
     Button,
     Checkbox,
+    IconButton,
+    Stack,
 } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
-import loadWorkList from "../_func";
+import { Link } from "react-router-dom";
+import { LoadWorkItems_fn } from "../_func";
 
 export default function ListWorkPage() {
     const toast = useToast();
@@ -31,7 +35,7 @@ export default function ListWorkPage() {
         }
         fin = true;
         setIsLoading(true);
-        let res = await loadWorkList("/tasks");
+        let res = await LoadWorkItems_fn("/tasks");
         setData(res);
         setIsLoading(false);
         if (!res.success) {
@@ -55,9 +59,23 @@ export default function ListWorkPage() {
 
     return (
         <>
-            <Button onClick={reloadData} isLoading={isLoading} colorScheme={"blue"}>
-                Reload
-            </Button>
+            <Stack direction={"row"} gap={4} alignContent={'center'}>
+                <Button
+                    onClick={reloadData}
+                    isLoading={isLoading}
+                    colorScheme={"blue"}
+                >
+                    Reload
+                </Button>
+                <Link to={"/aufgabe/hinzufuegen"}>
+                    <IconButton
+                        isLoading={isLoading}
+                        colorScheme={"blue"}
+                        icon={<PlusSquareIcon />}
+                        aria-label={"Add Work"}
+                    />
+                </Link>
+            </Stack>
             <TableContainer>
                 <Table variant="simple">
                     <TableCaption>Work</TableCaption>
@@ -81,9 +99,19 @@ export default function ListWorkPage() {
                                 <Td>{el.id}</Td>
                                 <Td>{el.title}</Td>
                                 <Td>
-                                    <Checkbox defaultChecked={el.completed}>
+                                    <Checkbox
+                                        disabled
+                                        defaultChecked={el.completed}
+                                    >
                                         {el.completed ? "Done" : "Todo"}
                                     </Checkbox>
+                                </Td>
+                                <Td>
+                                    <Link to={`/aufgabe/${el.id}`}>
+                                        <Button colorScheme={"blue"}>
+                                            Edit
+                                        </Button>
+                                    </Link>
                                 </Td>
                             </Tr>
                         ))}
