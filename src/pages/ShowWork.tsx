@@ -261,11 +261,7 @@ export default function ListWorkPage() {
                     </Tbody>
                 </Table>
             </TableContainer>
-            <AlertDialog
-                isOpen={isOpen}
-                leastDestructiveRef={cancelRef}
-                onClose={onClose}
-            >
+            <AlertDialog isOpen={isOpen} onClose={onClose}>
                 <AlertDialogOverlay>
                     <AlertDialogContent>
                         <AlertDialogHeader fontSize="lg" fontWeight="bold">
