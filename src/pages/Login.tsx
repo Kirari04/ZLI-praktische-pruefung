@@ -23,15 +23,17 @@ export default function LoginPage() {
     const [password, setPassword] = useState("");
 
     const logout = () => {
-        new Auth(() => null, isAuth, setIsAuth, false).signout((e: boolean) => {
-            setIsAuth(e);
-        });
+        new Auth((e: Auth) => null, isAuth, setIsAuth, false).signout(
+            (e: boolean) => {
+                setIsAuth(e);
+            }
+        );
     };
 
     const login = (e: any) => {
         e.preventDefault();
         setIsLoading(true);
-        const auth = new Auth(() => null, isAuth, setIsAuth);
+        const auth = new Auth((e: Auth) => null, isAuth, setIsAuth);
         auth.sign(email, password, isAuth, setIsAuth)
             .then((token) => {
                 toast({

@@ -16,7 +16,7 @@ import { UserContext } from "../hooks/_state";
 
 export default function DefaultLayout() {
     const { isAuth, setIsAuth } = useContext(UserContext);
-    new Auth((e: boolean) => {}, isAuth, setIsAuth);
+    new Auth((e: Auth) => {}, isAuth, setIsAuth);
 
     return (
         <>

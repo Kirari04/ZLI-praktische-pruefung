@@ -2,10 +2,11 @@ import axios from "axios";
 import React from "react";
 import _data from "./_data";
 
-function LoadWorkItems_fn(path: string): Promise<LoadWorkItems> {
+function LoadWorkItems_jwtfn(path: string, token: string): Promise<LoadWorkItems> {
+    _data.jwtaxios.headers.Authorization = `Bearer ${token}`;
     return new Promise((resolve, reject) => {
         axios
-            .get(`${_data.API}${path}`, _data.axios)
+            .get(`${_data.API}${path}`, _data.jwtaxios)
             .then((data) => {
                 resolve({
                     success: true,
@@ -23,10 +24,11 @@ function LoadWorkItems_fn(path: string): Promise<LoadWorkItems> {
     });
 }
 
-function loadWorkItem_fn(path: string): Promise<LoadWorkItem> {
+function loadWorkItem_jwtfn(path: string, token: string): Promise<LoadWorkItem> {
+    _data.jwtaxios.headers.Authorization = `Bearer ${token}`;
     return new Promise((resolve, reject) => {
         axios
-            .get(`${_data.API}${path}`, _data.axios)
+            .get(`${_data.API}${path}`, _data.jwtaxios)
             .then((data) => {
                 resolve({
                     success: true,
@@ -44,12 +46,14 @@ function loadWorkItem_fn(path: string): Promise<LoadWorkItem> {
     });
 }
 
-function updateWorkItem_fn(
+function updateWorkItem_jwtfn(
     path: string,
     id: number,
     completed: boolean,
-    title: string
+    title: string,
+    token: string
 ): Promise<LoadWorkItem> {
+    _data.jwtaxios.headers.Authorization = `Bearer ${token}`;
     return new Promise((resolve, reject) => {
         axios
             .put(
@@ -59,7 +63,7 @@ function updateWorkItem_fn(
                     completed: completed,
                     title: title,
                 },
-                _data.axios
+                _data.jwtaxios
             )
             .then((data) => {
                 resolve({
@@ -82,10 +86,15 @@ function updateWorkItem_fn(
     });
 }
 
-function deleteWorkItem_fn(path: string, id: number): Promise<LoadWorkItem> {
+function deleteWorkItem_jwtfn(
+    path: string,
+    id: number,
+    token: string
+): Promise<LoadWorkItem> {
+    _data.jwtaxios.headers.Authorization = `Bearer ${token}`;
     return new Promise((resolve, reject) => {
         axios
-            .delete(`${_data.API}${path}/${id}`, _data.axios)
+            .delete(`${_data.API}${path}/${id}`, _data.jwtaxios)
             .then((data) => {
                 resolve({
                     success: true,
@@ -103,11 +112,13 @@ function deleteWorkItem_fn(path: string, id: number): Promise<LoadWorkItem> {
     });
 }
 
-function addWorkItem_fn(
+function addWorkItem_jwtfn(
     path: string,
     completed: boolean,
-    title: string
+    title: string,
+    token: string
 ): Promise<LoadWorkItem> {
+    _data.jwtaxios.headers.Authorization = `Bearer ${token}`;
     return new Promise((resolve, reject) => {
         axios
             .post(
@@ -116,7 +127,7 @@ function addWorkItem_fn(
                     completed: completed,
                     title: title,
                 },
-                _data.axios
+                _data.jwtaxios
             )
             .then((data) => {
                 resolve({
@@ -140,9 +151,9 @@ function addWorkItem_fn(
 }
 
 export {
-    LoadWorkItems_fn,
-    loadWorkItem_fn,
-    updateWorkItem_fn,
-    addWorkItem_fn,
-    deleteWorkItem_fn,
+    LoadWorkItems_jwtfn,
+    loadWorkItem_jwtfn,
+    updateWorkItem_jwtfn,
+    addWorkItem_jwtfn,
+    deleteWorkItem_jwtfn,
 };

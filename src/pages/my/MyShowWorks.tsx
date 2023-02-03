@@ -15,28 +15,40 @@ import {
     IconButton,
     Stack,
 } from "@chakra-ui/react";
-import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
-import DeleteWorkButtonComponent from "../components/DeleteWorkButton";
-import { LoadWorkItems_fn } from "../_func";
+import { useContext, useEffect, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import DeleteWorkButtonComponent from "../../components/DeleteWorkButton";
+import { UserContext } from "../../hooks/_state";
+import Auth from "../../_auth";
+import { LoadWorkItems_fn } from "../../_func";
+import { LoadWorkItems_jwtfn } from "../../_func.jwt";
 
-export default function ListWorkPage() {
+export default function MyListWorkPage() {
     const toast = useToast();
-    let fin = false;
+    const navigate = useNavigate();
+    const { isAuth, setIsAuth } = useContext(UserContext);
     const [isLoading, setIsLoading] = useState(false);
-    const [data, setData] = useState({
+    const [token, settoken] = useState<null | string>(null);
+    const [data, setData] = useState<LoadWorkItems>({
         success: false,
         data: [],
         error: null,
-    } as LoadWorkItems);
+    });
 
-    const loadData = async () => {
+    let fin = false;
+
+    if (!isAuth) {
+        navigate("/login");
+    }
+
+    const loadData = async (AuthToken: string) => {
         if (fin) {
             return;
         }
         fin = true;
         setIsLoading(true);
-        let res = await LoadWorkItems_fn("/tasks");
+        let res = await LoadWorkItems_jwtfn("/auth/jwt/tasks", AuthToken);
+
         setData(res);
         setIsLoading(false);
         if (!res.success) {
@@ -51,11 +63,22 @@ export default function ListWorkPage() {
     };
     const reloadData = () => {
         fin = false;
-        loadData();
+        loadData(`${token}`);
     };
 
     useEffect(() => {
-        loadData();
+        new Auth(
+            (e: Auth) => {
+                settoken(e.token);
+                loadData(`${e.token}`);
+                if (!e.isAuth) {
+                    navigate("/login");
+                }
+            },
+            isAuth,
+            setIsAuth,
+            true
+        );
     }, []);
 
     return (
@@ -109,7 +132,7 @@ export default function ListWorkPage() {
                                     </Checkbox>
                                 </Td>
                                 <Td>
-                                    <Link to={`/aufgabe/${el.id}`}>
+                                    <Link to={`/meine/aufgabe/${el.id}`}>
                                         <Button colorScheme={"blue"}>
                                             Edit
                                         </Button>

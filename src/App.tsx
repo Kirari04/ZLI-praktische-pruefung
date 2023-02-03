@@ -28,6 +28,8 @@ import _data from "./_data";
 import LoginPage from "./pages/Login";
 import React from "react";
 import { UserContext } from "./hooks/_state";
+import MyShowWorks from "./pages/my/MyShowWorks";
+import MyShowWork from "./pages/my/MyShowWork";
 
 const router = createBrowserRouter([
     {
@@ -50,6 +52,18 @@ const router = createBrowserRouter([
             {
                 path: "aufgabe/:workId",
                 element: <ShowWork />,
+            },
+            {
+                path: "aufgabe/hinzufuegen",
+                element: <AddWork />,
+            },
+            {
+                path: "meine/aufgaben/",
+                element: <MyShowWorks />,
+            },
+            {
+                path: "meine/aufgabe/:workId",
+                element: <MyShowWork />,
             },
             {
                 path: "aufgabe/hinzufuegen",

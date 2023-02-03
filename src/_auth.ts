@@ -8,6 +8,7 @@ interface UserData {
 }
 
 export default class Auth {
+    public isAuth: boolean = false;
     public token: string | null = null;
     private storageKey: string = "auth";
     public user: UserData = {
@@ -20,18 +21,22 @@ export default class Auth {
         setIsAuth: Function,
         verify: boolean = true
     ) {
+        this.isAuth = isAuth;
         const currentToken = localStorage.getItem(this.storageKey);
         if (currentToken) {
             this.token = currentToken;
             if (verify) {
                 this.check().then((isAuthTmp) => {
                     setIsAuth(isAuthTmp);
-                    callback(isAuthTmp);
+                    this.isAuth = isAuthTmp;
                     if (!isAuthTmp) {
                         this.token = null;
                         localStorage.setItem(this.storageKey, "");
                     }
+                    callback(this);
                 });
+            } else {
+                callback(this);
             }
         }
     }
@@ -70,7 +75,7 @@ export default class Auth {
                     this.token = data.data.token;
                     this.check().then((isAuthTmp) => {
                         setIsAuth(isAuthTmp);
-                        console.log("isAuth after register", isAuth);
+                        this.isAuth = isAuthTmp;
                     });
                     localStorage.setItem(this.storageKey, `${this.token}`);
                     resolve(`${this.token}`);
@@ -83,6 +88,7 @@ export default class Auth {
     public signout(setIsAuth: Function) {
         localStorage.setItem(this.storageKey, "");
         setIsAuth(false);
+        this.isAuth = false;
         this.token = null;
         this.user = {
             email: null,
