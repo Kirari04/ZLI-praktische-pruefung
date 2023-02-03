@@ -42,13 +42,10 @@ export default class Auth {
         }
     }
     private check(): Promise<boolean> {
+        _data.jwtaxios.headers.Authorization = `Bearer ${this.token}`;
         return new Promise((resolve) => {
             axios
-                .get(`${_data.API}/auth/jwt/verify`, {
-                    headers: {
-                        Authorization: `Bearer ${this.token}`,
-                    },
-                })
+                .get(`${_data.API}/auth/jwt/verify`, _data.jwtaxios)
                 .then((data) => {
                     this.user.email = data.data.email;
                     this.user.iat = data.data.iat;
@@ -68,10 +65,14 @@ export default class Auth {
     ): Promise<string> {
         return new Promise((resolve, reject) => {
             axios
-                .post(`${_data.API}/auth/jwt/sign`, {
-                    email: email,
-                    password: password,
-                })
+                .post(
+                    `${_data.API}/auth/jwt/sign`,
+                    {
+                        email: email,
+                        password: password,
+                    },
+                    _data.axios
+                )
                 .then((data) => {
                     this.token = data.data.token;
                     this.check().then((isAuthTmp) => {
