@@ -10,9 +10,9 @@ import {
 import { useContext, useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
+import Auth from "../../hooks/_auth";
+import { addWorkItem_jwtfn } from "../../hooks/_func.jwt";
 import { UserContext } from "../../hooks/_state";
-import Auth from "../../_auth";
-import { addWorkItem_jwtfn } from "../../_func.jwt";
 
 export default function MyAddWork() {
     const toast = useToast();

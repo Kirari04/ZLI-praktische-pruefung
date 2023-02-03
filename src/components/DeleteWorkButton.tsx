@@ -12,10 +12,10 @@ import {
 } from "@chakra-ui/react";
 import React, { useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import Auth from "../hooks/_auth";
+import { deleteWorkItem_fn } from "../hooks/_func";
+import { deleteWorkItem_jwtfn } from "../hooks/_func.jwt";
 import { UserContext } from "../hooks/_state";
-import Auth from "../_auth";
-import { deleteWorkItem_fn } from "../_func";
-import { deleteWorkItem_jwtfn } from "../_func.jwt";
 
 export default function DeleteWorkButtonComponent(props: {
     data: LoadWorkItem;

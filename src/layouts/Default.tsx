@@ -3,8 +3,8 @@ import { Outlet } from "react-router-dom";
 
 import { useContext } from "react";
 import ApplicationMenu from "../components/ApplicationMenu";
+import Auth from "../hooks/_auth";
 import { UserContext } from "../hooks/_state";
-import Auth from "../_auth";
 
 export default function DefaultLayout() {
     const { isAuth, setIsAuth } = useContext(UserContext);

@@ -18,7 +18,7 @@ import {
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import DeleteWorkButtonComponent from "../components/DeleteWorkButton";
-import { LoadWorkItems_fn } from "../_func";
+import { LoadWorkItems_fn } from "../hooks/_func";
 
 export default function ListWorkPage() {
     const toast = useToast();

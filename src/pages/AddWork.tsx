@@ -9,7 +9,7 @@ import {
 } from "@chakra-ui/react";
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { addWorkItem_fn } from "../_func";
+import { addWorkItem_fn } from "../hooks/_func";
 
 export default function AddWorkPage() {
     const toast = useToast();

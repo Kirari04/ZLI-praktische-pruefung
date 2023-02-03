@@ -1,5 +1,5 @@
 import axios from "axios";
-import _data from "./_data";
+import _data from "../_data";
 
 function LoadWorkItems_jwtfn(
     path: string,

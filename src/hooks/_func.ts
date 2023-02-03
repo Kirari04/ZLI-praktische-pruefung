@@ -1,5 +1,5 @@
 import axios from "axios";
-import _data from "./_data";
+import _data from "../_data";
 
 function LoadWorkItems_fn(path: string): Promise<LoadWorkItems> {
     return new Promise((resolve) => {

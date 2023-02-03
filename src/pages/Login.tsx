@@ -9,9 +9,9 @@ import {
 } from "@chakra-ui/react";
 import React, { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import Auth from "../hooks/_auth";
 import { UserContext } from "../hooks/_state";
 import KeyIcon from "../icons/KeyIcon";
-import Auth from "../_auth";
 
 export default function LoginPage() {
     const { isAuth, setIsAuth } = useContext(UserContext);
