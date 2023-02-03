@@ -1,0 +1,161 @@
+commit 8a0a2ecae640c1865f3b59aff53e734d2fc2eb0b
+Author: Lev Saminskij <103888491+Kirari04@users.noreply.github.com>
+Date:   Fri Feb 3 15:24:55 2023 +0000
+
+    added tests
+
+commit 3c3119077a4650233aaef34526a633a30bc3bd2a
+Author: Lev Saminskij <103888491+Kirari04@users.noreply.github.com>
+Date:   Fri Feb 3 15:10:47 2023 +0000
+
+    added axios config to auth class
+
+commit c273f1ad8b2f876379fd0ffffd3081b1276a2575
+Author: Lev Saminskij <103888491+Kirari04@users.noreply.github.com>
+Date:   Fri Feb 3 15:04:33 2023 +0000
+
+    added breadcrumb on all pages
+
+commit ad52b5d846dfb5a34c3480995a71c04038736ee3
+Author: Lev Saminskij <103888491+Kirari04@users.noreply.github.com>
+Date:   Fri Feb 3 14:21:56 2023 +0000
+
+    added home page
+
+commit 8cebaa2a2a0631629572cf5ebacaef52f15826bb
+Author: Lev Saminskij <103888491+Kirari04@users.noreply.github.com>
+Date:   Fri Feb 3 12:55:09 2023 +0000
+
+    renamed app
+
+commit d9bb09792c7f55846fa13c99b9a5d491d2ad0ab5
+Author: Lev Saminskij <103888491+Kirari04@users.noreply.github.com>
+Date:   Fri Feb 3 12:53:07 2023 +0000
+
+    moved hoocks into the correct folder
+
+commit e79ae6b6f19bc4c73a7cced8d661dae44f3f9cf1
+Author: Lev Saminskij <103888491+Kirari04@users.noreply.github.com>
+Date:   Fri Feb 3 12:48:34 2023 +0000
+
+    fixed all eslint errors
+
+commit 35eb08cf81be17ed48b6e81b227bd09926b5c039
+Author: Lev Saminskij <103888491+Kirari04@users.noreply.github.com>
+Date:   Fri Feb 3 12:43:56 2023 +0000
+
+    eslint fixes
+
+commit 459bc3cc48127397e58e252638a955f49b6fa5ee
+Author: Lev Saminskij <103888491+Kirari04@users.noreply.github.com>
+Date:   Fri Feb 3 10:03:40 2023 +0000
+
+    fixed auth no redirect issue
+
+commit a3da796113b2ae6eb1f7b4cbb96b323f14417af3
+Author: Lev Saminskij <103888491+Kirari04@users.noreply.github.com>
+Date:   Fri Feb 3 10:01:03 2023 +0000
+
+    added auth pages
+
+commit b8553b431adbbff9bcb9bba556dbec099b914773
+Author: Lev Saminskij <103888491+Kirari04@users.noreply.github.com>
+Date:   Thu Feb 2 15:45:39 2023 +0000
+
+    added authentication
+
+commit 37ad7dc867bc477888cc63409833fa19bd66f3da
+Author: Lev Saminskij <103888491+Kirari04@users.noreply.github.com>
+Date:   Thu Feb 2 12:12:44 2023 +0000
+
+    made delete button an component
+
+commit b7b6d28c7e4c7b24ffa166c1adff4a20224b7931
+Author: Lev Saminskij <103888491+Kirari04@users.noreply.github.com>
+Date:   Thu Feb 2 10:40:26 2023 +0000
+
+    fixed type error
+
+commit 37c7e51d332169bcfe07f27eddf3eb2db6553cb5
+Author: Lev Saminskij <103888491+Kirari04@users.noreply.github.com>
+Date:   Thu Feb 2 10:38:59 2023 +0000
+
+    removed legacy stuff
+
+commit 6b953e8b29be22c214b43d522577ec3711f406ac
+Author: Lev Saminskij <103888491+Kirari04@users.noreply.github.com>
+Date:   Thu Feb 2 10:38:33 2023 +0000
+
+    renamed list
+
+commit 411fd49ba287e7282d2ad04b115b91343e4dc264
+Author: Lev Saminskij <103888491+Kirari04@users.noreply.github.com>
+Date:   Thu Feb 2 10:38:24 2023 +0000
+
+    added error page
+
+commit e8624566860c4ed39bd523092b2c5379e45df735
+Author: Lev Saminskij <103888491+Kirari04@users.noreply.github.com>
+Date:   Thu Feb 2 10:38:16 2023 +0000
+
+    added singular interface
+
+commit 72bc4e0cc3e60818ab8772c3fe9841164886f3c4
+Author: Lev Saminskij <103888491+Kirari04@users.noreply.github.com>
+Date:   Thu Feb 2 10:37:56 2023 +0000
+
+    added routes
+
+commit 3d5e372d2538f0c329f580135bbd435cec31c8bd
+Author: Lev Saminskij <103888491+Kirari04@users.noreply.github.com>
+Date:   Thu Feb 2 10:37:46 2023 +0000
+
+    added menu routes
+
+commit 8718797200567f904e435f06466d7305ab9e7ddc
+Author: Lev Saminskij <103888491+Kirari04@users.noreply.github.com>
+Date:   Thu Feb 2 10:37:26 2023 +0000
+
+    added crud functions
+
+commit ff6e84adb3beaca12c77951a1ad736b40788f75d
+Author: Lev Saminskij <103888491+Kirari04@users.noreply.github.com>
+Date:   Wed Feb 1 15:03:40 2023 +0000
+
+    added router
+
+commit bd4a6d5280a438c6059b038ec5b29f18346ed454
+Author: Lev Saminskij <103888491+Kirari04@users.noreply.github.com>
+Date:   Wed Feb 1 15:03:27 2023 +0000
+
+    added fetch function
+
+commit 631276919e5a1eb8101ec5323e6ceec6ed9e9c98
+Author: Lev Saminskij <103888491+Kirari04@users.noreply.github.com>
+Date:   Wed Feb 1 15:03:14 2023 +0000
+
+    added dependencies
+
+commit 63e71e3f6273d64b78bf9b4578ac95c6f724867a
+Author: Lev Saminskij <103888491+Kirari04@users.noreply.github.com>
+Date:   Wed Feb 1 15:03:04 2023 +0000
+
+    added global data
+
+commit 3fb145959bf6e1c590942ea3f40c61715cc49f50
+Author: Lev Saminskij <103888491+Kirari04@users.noreply.github.com>
+Date:   Wed Feb 1 09:57:32 2023 +0000
+
+    added chakra uI
+
+commit ee6c80d1b0c4f05c0d8de27a02366b053bfc9a52
+Author: Lev Saminskij <103888491+Kirari04@users.noreply.github.com>
+Date:   Wed Feb 1 09:53:05 2023 +0000
+
+    initial commit
+
+commit 41d7557096e5e00d5352b9bc9bbdfa2438b52761
+Author: Lev Saminskij <103888491+Kirari04@users.noreply.github.com>
+Date:   Wed Feb 1 09:41:07 2023 +0000
+
+    Initialize project using Create React App
