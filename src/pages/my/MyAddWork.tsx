@@ -9,6 +9,7 @@ import {
 } from "@chakra-ui/react";
 import { useContext, useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import BreadCrumArray from "../../components/BreadCrumbArray";
 
 import Auth from "../../hooks/_auth";
 import { addWorkItem_jwtfn } from "../../hooks/_func.jwt";
@@ -79,6 +80,22 @@ export default function MyAddWork() {
 
     return (
         <>
+            <BreadCrumArray
+                list={[
+                    {
+                        title: "Home",
+                        path: "/",
+                    },
+                    {
+                        title: "Meine Aufgaben",
+                        path: "/meine/aufgaben",
+                    },
+                    {
+                        title: "Hinzufügen",
+                        path: "/meine/aufgabe/hinzufuegen",
+                    },
+                ]}
+            />
             <Link to={"/meine/aufgaben"}>
                 <IconButton
                     colorScheme={"blue"}

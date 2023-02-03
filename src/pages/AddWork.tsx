@@ -9,6 +9,7 @@ import {
 } from "@chakra-ui/react";
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import BreadCrumArray from "../components/BreadCrumbArray";
 import { addWorkItem_fn } from "../hooks/_func";
 
 export default function AddWorkPage() {
@@ -55,6 +56,22 @@ export default function AddWorkPage() {
 
     return (
         <>
+            <BreadCrumArray
+                list={[
+                    {
+                        title: "Home",
+                        path: "/",
+                    },
+                    {
+                        title: "Aufgaben",
+                        path: "/aufgaben",
+                    },
+                    {
+                        title: "Hinzufügen",
+                        path: "/aufgabe/hinzufuegen",
+                    },
+                ]}
+            />
             <Link to={"/aufgaben"}>
                 <IconButton
                     colorScheme={"blue"}

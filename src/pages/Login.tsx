@@ -9,6 +9,7 @@ import {
 } from "@chakra-ui/react";
 import React, { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import BreadCrumArray from "../components/BreadCrumbArray";
 import Auth from "../hooks/_auth";
 import { UserContext } from "../hooks/_state";
 import KeyIcon from "../icons/KeyIcon";
@@ -70,6 +71,18 @@ export default function LoginPage() {
     if (isAuth) {
         return (
             <Stack direction={"column"} alignItems="start" gap={4}>
+                <BreadCrumArray
+                    list={[
+                        {
+                            title: "Home",
+                            path: "/",
+                        },
+                        {
+                            title: "Login",
+                            path: "/login",
+                        },
+                    ]}
+                />
                 <p>
                     Du bist bereits angemeldet. Um mit einem anderen Account
                     anzumelden musst du dich zuerst abmelden.
@@ -83,8 +96,20 @@ export default function LoginPage() {
 
     return (
         <form action="#" onSubmit={login}>
+            <BreadCrumArray
+                list={[
+                    {
+                        title: "Home",
+                        path: "/",
+                    },
+                    {
+                        title: "Login",
+                        path: "/login",
+                    },
+                ]}
+            />
+            <br />
             <Stack direction={"column"} alignItems="start">
-                <h1>Login / Register your Account</h1>
                 <label htmlFor="email">
                     <strong>Email</strong>
                     <InputGroup>

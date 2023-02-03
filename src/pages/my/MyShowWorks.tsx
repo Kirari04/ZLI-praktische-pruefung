@@ -17,6 +17,7 @@ import {
 } from "@chakra-ui/react";
 import { useContext, useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import BreadCrumArray from "../../components/BreadCrumbArray";
 import DeleteWorkButtonComponent from "../../components/DeleteWorkButton";
 import Auth from "../../hooks/_auth";
 import { LoadWorkItems_jwtfn } from "../../hooks/_func.jwt";
@@ -82,6 +83,18 @@ export default function MyShowWorks() {
 
     return (
         <>
+            <BreadCrumArray
+                list={[
+                    {
+                        title: "Home",
+                        path: "/",
+                    },
+                    {
+                        title: "Meine Aufgaben",
+                        path: "/meine/aufgaben",
+                    },
+                ]}
+            />
             <Stack direction={"row"} gap={4} alignContent={"center"}>
                 <Button
                     onClick={reloadData}

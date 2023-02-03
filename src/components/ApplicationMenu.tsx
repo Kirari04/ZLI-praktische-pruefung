@@ -1,4 +1,5 @@
 import {
+    Button,
     IconButton,
     Menu,
     MenuButton,
@@ -51,22 +52,26 @@ export default function ApplicationMenu() {
                     <>
                         <Link to={"/meine/aufgaben"}>
                             <MenuItem icon={<UnlockIcon />}>
-                                Alle Aufgaben
+                                Alle meine Aufgaben
                             </MenuItem>
                         </Link>
                         <Link to={"/meine/aufgabe/hinzufuegen"}>
                             <MenuItem icon={<UnlockIcon />}>
-                                Aufgaben Hinzufügen
+                                Zu meinen Aufgaben hinzufügen
                             </MenuItem>
                         </Link>
-                        <MenuItem onClick={logout} bgColor={"red.400"}>
-                            Abmelden
+                        <MenuItem>
+                            <Button onClick={logout} colorScheme={"red"}>
+                                Abmelden
+                            </Button>
                         </MenuItem>
                     </>
                 ) : (
-                    <Link to={"/login"}>
-                        <MenuItem bgColor={"blue.400"}>Anmelden</MenuItem>
-                    </Link>
+                    <MenuItem bgColor={"blue.400"}>
+                        <Link to={"/login"}>
+                            <Button colorScheme={"blue"}>Anmelden</Button>
+                        </Link>
+                    </MenuItem>
                 )}
             </MenuList>
         </Menu>

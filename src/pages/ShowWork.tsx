@@ -18,6 +18,7 @@ import {
 } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
+import BreadCrumArray from "../components/BreadCrumbArray";
 import DeleteWorkButtonComponent from "../components/DeleteWorkButton";
 import { loadWorkItem_fn, updateWorkItem_fn } from "../hooks/_func";
 
@@ -98,6 +99,22 @@ export default function ListWorkPage() {
 
     return (
         <>
+            <BreadCrumArray
+                list={[
+                    {
+                        title: "Home",
+                        path: "/",
+                    },
+                    {
+                        title: "Aufgaben",
+                        path: "/aufgaben",
+                    },
+                    {
+                        title: `${data?.data?.title}`,
+                        path: `/aufgabe/${data?.data?.title}`,
+                    },
+                ]}
+            />
             <Stack direction={"row"} gap={4} alignContent={"center"}>
                 <Link to={"/aufgaben"}>
                     <IconButton
