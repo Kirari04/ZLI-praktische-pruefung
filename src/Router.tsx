@@ -56,7 +56,7 @@ const router = createBrowserRouter([
     },
 ]);
 
-function App() {
+function Router() {
     const [isAuth, setIsAuth] = useState(false);
     const setIsAuthState = (isAuth: boolean) => {
         setIsAuth(isAuth);
@@ -70,4 +70,4 @@ function App() {
     );
 }
 
-export { App };
+export { Router };
