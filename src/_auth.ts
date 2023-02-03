@@ -38,6 +38,8 @@ export default class Auth {
             } else {
                 callback(this);
             }
+        }else{
+            callback(this);
         }
     }
     private check(): Promise<boolean> {
