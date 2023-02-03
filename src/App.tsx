@@ -1,35 +1,18 @@
-import {
-    Button,
-    Tabs,
-    TabList,
-    TabPanels,
-    Tab,
-    TabPanel,
-    ScaleFade,
-    Box,
-} from "@chakra-ui/react";
 import { useState } from "react";
-import {
-    BrowserRouter,
-    createBrowserRouter,
-    Route,
-    RouterProvider,
-    Routes,
-} from "react-router-dom";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import DefaultLayout from "./layouts/Default";
 import DefaultError from "./layouts/DefaultError";
 
-import Index from "./pages/Index";
-import ShowWorks from "./pages/ShowWorks";
-import ShowWork from "./pages/ShowWork";
 import AddWork from "./pages/AddWork";
+import Index from "./pages/Index";
+import ShowWork from "./pages/ShowWork";
+import ShowWorks from "./pages/ShowWorks";
 
-import _data from "./_data";
-import LoginPage from "./pages/Login";
-import React from "react";
 import { UserContext } from "./hooks/_state";
-import MyShowWorks from "./pages/my/MyShowWorks";
+import LoginPage from "./pages/Login";
+import MyAddWork from "./pages/my/MyAddWork";
 import MyShowWork from "./pages/my/MyShowWork";
+import MyShowWorks from "./pages/my/MyShowWorks";
 
 const router = createBrowserRouter([
     {
@@ -66,8 +49,8 @@ const router = createBrowserRouter([
                 element: <MyShowWork />,
             },
             {
-                path: "aufgabe/hinzufuegen",
-                element: <AddWork />,
+                path: "meine/aufgabe/hinzufuegen",
+                element: <MyAddWork />,
             },
         ],
     },

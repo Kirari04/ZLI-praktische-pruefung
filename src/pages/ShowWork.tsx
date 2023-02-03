@@ -1,37 +1,25 @@
+import { ArrowBackIcon, PlusSquareIcon } from "@chakra-ui/icons";
 import {
-    Table,
-    Thead,
-    Tbody,
-    Tr,
-    Th,
-    Td,
-    TableCaption,
-    TableContainer,
-    useToast,
-    Spinner,
     Button,
     Checkbox,
-    Input,
     IconButton,
+    Input,
+    Spinner,
     Stack,
-    useDisclosure,
-    AlertDialog,
-    AlertDialogOverlay,
-    AlertDialogContent,
-    AlertDialogBody,
-    AlertDialogFooter,
-    AlertDialogHeader,
+    Table,
+    TableCaption,
+    TableContainer,
+    Tbody,
+    Td,
+    Th,
+    Thead,
+    Tr,
+    useToast,
 } from "@chakra-ui/react";
-import { ArrowBackIcon, PlusSquareIcon } from "@chakra-ui/icons";
-import { RefObject, useEffect, useState } from "react";
-import { Link, Params, useNavigate, useParams } from "react-router-dom";
-import {
-    deleteWorkItem_fn,
-    loadWorkItem_fn,
-    updateWorkItem_fn,
-} from "../_func";
-import React from "react";
+import { useEffect, useState } from "react";
+import { Link, useParams } from "react-router-dom";
 import DeleteWorkButtonComponent from "../components/DeleteWorkButton";
+import { loadWorkItem_fn, updateWorkItem_fn } from "../_func";
 
 export default function ListWorkPage() {
     const toast = useToast();
@@ -47,7 +35,7 @@ export default function ListWorkPage() {
         }
         fin = true;
         setIsLoading(true);
-        let res = await loadWorkItem_fn(`/task/${workId}`);
+        const res = await loadWorkItem_fn(`/task/${workId}`);
         setData(res);
         setIsLoading(false);
         if (!res.success) {
@@ -68,7 +56,7 @@ export default function ListWorkPage() {
     const updateData = async () => {
         if (data?.success && data.data) {
             setIsLoadingButton(true);
-            let res = await updateWorkItem_fn(
+            const res = await updateWorkItem_fn(
                 "/tasks",
                 data?.data?.id,
                 data?.data?.completed,

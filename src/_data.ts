@@ -5,6 +5,6 @@ export default {
     },
     jwtaxios: {
         timeout: 5000,
-        headers: { Authorization: `Bearer ` },
+        headers: { Authorization: "Bearer " },
     },
 };

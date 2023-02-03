@@ -1,4 +1,4 @@
-import { AtSignIcon, EmailIcon, RepeatIcon } from "@chakra-ui/icons";
+import { EmailIcon } from "@chakra-ui/icons";
 import {
     Button,
     Input,
@@ -7,7 +7,7 @@ import {
     Stack,
     useToast,
 } from "@chakra-ui/react";
-import { useContext, useState } from "react";
+import React, { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { UserContext } from "../hooks/_state";
 import KeyIcon from "../icons/KeyIcon";
@@ -23,19 +23,17 @@ export default function LoginPage() {
     const [password, setPassword] = useState("");
 
     const logout = () => {
-        new Auth((e: Auth) => null, isAuth, setIsAuth, false).signout(
-            (e: boolean) => {
-                setIsAuth(e);
-            }
-        );
+        new Auth(() => null, isAuth, setIsAuth, false).signout((e: boolean) => {
+            setIsAuth(e);
+        });
     };
 
-    const login = (e: any) => {
+    const login = (e: React.FormEvent) => {
         e.preventDefault();
         setIsLoading(true);
-        const auth = new Auth((e: Auth) => null, isAuth, setIsAuth);
+        const auth = new Auth(() => null, isAuth, setIsAuth);
         auth.sign(email, password, isAuth, setIsAuth)
-            .then((token) => {
+            .then(() => {
                 toast({
                     title: "Success",
                     description: "Du wurdest angemeldet",
@@ -98,6 +96,7 @@ export default function LoginPage() {
                             placeholder="example@gmail.com"
                             value={email}
                             onChange={(e) => setEmail(e.target.value)}
+                            required
                         />
                     </InputGroup>
                 </label>
@@ -111,6 +110,7 @@ export default function LoginPage() {
                             placeholder="SuperSecure123"
                             value={password}
                             onChange={(e) => setPassword(e.target.value)}
+                            required
                         />
                     </InputGroup>
                 </label>

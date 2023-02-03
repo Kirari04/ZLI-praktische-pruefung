@@ -1,10 +1,12 @@
 import axios from "axios";
-import React from "react";
 import _data from "./_data";
 
-function LoadWorkItems_jwtfn(path: string, token: string): Promise<LoadWorkItems> {
+function LoadWorkItems_jwtfn(
+    path: string,
+    token: string
+): Promise<LoadWorkItems> {
     _data.jwtaxios.headers.Authorization = `Bearer ${token}`;
-    return new Promise((resolve, reject) => {
+    return new Promise((resolve) => {
         axios
             .get(`${_data.API}${path}`, _data.jwtaxios)
             .then((data) => {
@@ -24,9 +26,12 @@ function LoadWorkItems_jwtfn(path: string, token: string): Promise<LoadWorkItems
     });
 }
 
-function loadWorkItem_jwtfn(path: string, token: string): Promise<LoadWorkItem> {
+function loadWorkItem_jwtfn(
+    path: string,
+    token: string
+): Promise<LoadWorkItem> {
     _data.jwtaxios.headers.Authorization = `Bearer ${token}`;
-    return new Promise((resolve, reject) => {
+    return new Promise((resolve) => {
         axios
             .get(`${_data.API}${path}`, _data.jwtaxios)
             .then((data) => {
@@ -54,7 +59,7 @@ function updateWorkItem_jwtfn(
     token: string
 ): Promise<LoadWorkItem> {
     _data.jwtaxios.headers.Authorization = `Bearer ${token}`;
-    return new Promise((resolve, reject) => {
+    return new Promise((resolve) => {
         axios
             .put(
                 `${_data.API}${path}`,
@@ -65,7 +70,7 @@ function updateWorkItem_jwtfn(
                 },
                 _data.jwtaxios
             )
-            .then((data) => {
+            .then(() => {
                 resolve({
                     success: true,
                     data: {
@@ -92,10 +97,10 @@ function deleteWorkItem_jwtfn(
     token: string
 ): Promise<LoadWorkItem> {
     _data.jwtaxios.headers.Authorization = `Bearer ${token}`;
-    return new Promise((resolve, reject) => {
+    return new Promise((resolve) => {
         axios
             .delete(`${_data.API}${path}/${id}`, _data.jwtaxios)
-            .then((data) => {
+            .then(() => {
                 resolve({
                     success: true,
                     data: null,
@@ -119,7 +124,7 @@ function addWorkItem_jwtfn(
     token: string
 ): Promise<LoadWorkItem> {
     _data.jwtaxios.headers.Authorization = `Bearer ${token}`;
-    return new Promise((resolve, reject) => {
+    return new Promise((resolve) => {
         axios
             .post(
                 `${_data.API}${path}`,

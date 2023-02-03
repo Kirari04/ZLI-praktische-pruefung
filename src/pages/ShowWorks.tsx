@@ -1,19 +1,19 @@
 import { PlusSquareIcon } from "@chakra-ui/icons";
 import {
-    Table,
-    Thead,
-    Tbody,
-    Tr,
-    Th,
-    Td,
-    TableCaption,
-    TableContainer,
-    useToast,
-    Spinner,
     Button,
     Checkbox,
     IconButton,
+    Spinner,
     Stack,
+    Table,
+    TableCaption,
+    TableContainer,
+    Tbody,
+    Td,
+    Th,
+    Thead,
+    Tr,
+    useToast,
 } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
@@ -36,7 +36,7 @@ export default function ListWorkPage() {
         }
         fin = true;
         setIsLoading(true);
-        let res = await LoadWorkItems_fn("/tasks");
+        const res = await LoadWorkItems_fn("/tasks");
         setData(res);
         setIsLoading(false);
         if (!res.success) {

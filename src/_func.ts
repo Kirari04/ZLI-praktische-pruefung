@@ -1,9 +1,8 @@
 import axios from "axios";
-import React from "react";
 import _data from "./_data";
 
 function LoadWorkItems_fn(path: string): Promise<LoadWorkItems> {
-    return new Promise((resolve, reject) => {
+    return new Promise((resolve) => {
         axios
             .get(`${_data.API}${path}`, _data.axios)
             .then((data) => {
@@ -24,7 +23,7 @@ function LoadWorkItems_fn(path: string): Promise<LoadWorkItems> {
 }
 
 function loadWorkItem_fn(path: string): Promise<LoadWorkItem> {
-    return new Promise((resolve, reject) => {
+    return new Promise((resolve) => {
         axios
             .get(`${_data.API}${path}`, _data.axios)
             .then((data) => {
@@ -50,7 +49,7 @@ function updateWorkItem_fn(
     completed: boolean,
     title: string
 ): Promise<LoadWorkItem> {
-    return new Promise((resolve, reject) => {
+    return new Promise((resolve) => {
         axios
             .put(
                 `${_data.API}${path}`,
@@ -61,7 +60,7 @@ function updateWorkItem_fn(
                 },
                 _data.axios
             )
-            .then((data) => {
+            .then(() => {
                 resolve({
                     success: true,
                     data: {
@@ -83,10 +82,10 @@ function updateWorkItem_fn(
 }
 
 function deleteWorkItem_fn(path: string, id: number): Promise<LoadWorkItem> {
-    return new Promise((resolve, reject) => {
+    return new Promise((resolve) => {
         axios
             .delete(`${_data.API}${path}/${id}`, _data.axios)
-            .then((data) => {
+            .then(() => {
                 resolve({
                     success: true,
                     data: null,
@@ -108,7 +107,7 @@ function addWorkItem_fn(
     completed: boolean,
     title: string
 ): Promise<LoadWorkItem> {
-    return new Promise((resolve, reject) => {
+    return new Promise((resolve) => {
         axios
             .post(
                 `${_data.API}${path}`,

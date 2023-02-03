@@ -1,8 +1,8 @@
-import React, { Dispatch, SetStateAction, useState } from "react";
+import React from "react"
 
 const UserContext = React.createContext({
-    isAuth: false,
-    setIsAuth: (isAuth: boolean) => {}
+	isAuth: false,
+	setIsAuth: (isAuth: boolean) => {}
 })
 
 export {UserContext}

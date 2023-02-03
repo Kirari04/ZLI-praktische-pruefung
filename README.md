@@ -1,6 +1,20 @@
-# Getting Started with Create React App
+# Getting Started with Batuhan CRUD Application
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Config
+
+### Application Config
+
+The configs for the backend url and axios are located in `src/_data.ts`
+
+### Code Config
+
+A list of important config files for developement enviroment
+
+- NPM `package.json`
+- Prettier `.prettierrc`
+- ESLint `.eslintrc.json`
+- Vscode `.vscode/settings.json`
+- Typescript `tsconfig.json`
 
 ## Available Scripts
 
@@ -9,7 +23,7 @@ In the project directory, you can run:
 ### `npm start`
 
 Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Open [http://localhost:8080](http://localhost:8080) to view it in the browser.
 
 The page will reload if you make edits.\
 You will also see any lint errors in the console.
@@ -28,74 +42,3 @@ The build is minified and the filenames include the hashes.\
 Your app is ready to be deployed!
 
 See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-```
-<Button
-    isLoading={isLoading}
-    loadingText="Loading"
-    colorScheme="teal"
-    variant="outline"
-    spinnerPlacement="start"
-    onClick={() => {
-        setIsLoading(true);
-        fetch(new URL(`${_data.API}/tasks`))
-            .then((e) => e.json())
-            .then((data) => {
-                setIsLoading(false);
-                toast({
-                    title: "Fetch.",
-                    description: "Good to Fetch.",
-                    status: "success",
-                    duration: 9000,
-                    isClosable: true,
-                });
-            })
-            .catch((err) => {
-                setIsLoading(false);
-                toast({
-                    title: "Failed to Fetch.",
-                    description: err.message,
-                    status: "error",
-                    duration: 9000,
-                    isClosable: true,
-                });
-            });
-    }}
->
-    Submit
-</Button>
-```
-
-```
-<ScaleFade
-    initialScale={0.8}
-    in={Boolean(tabIndex === i)}
->
-    <Box
-        p="2rem"
-        color="white"
-        mt="4"
-        bg="teal.500"
-        rounded="md"
-        shadow="md"
-    >
-        {el.page()}
-    </Box>
-</ScaleFade>
-```

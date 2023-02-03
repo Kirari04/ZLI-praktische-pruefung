@@ -7,22 +7,32 @@ import {
     Stack,
     useToast,
 } from "@chakra-ui/react";
-import React, { useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { addWorkItem_fn } from "../_func";
 
-export default function AddWorkPage() {
+import { UserContext } from "../../hooks/_state";
+import Auth from "../../_auth";
+import { addWorkItem_jwtfn } from "../../_func.jwt";
+
+export default function MyAddWork() {
     const toast = useToast();
     const navigate = useNavigate();
     const [isLoadingButton, setIsLoadingButton] = useState(false);
     const [title, setTitle] = useState<string>("");
     const [completed, setCompleted] = useState<boolean>(false);
+    const [token, settoken] = useState<null | string>(null);
+    const { isAuth, setIsAuth } = useContext(UserContext);
 
     const AddData = async (e: React.FormEvent) => {
         e.preventDefault();
         setIsLoadingButton(true);
         if (title) {
-            const res = await addWorkItem_fn("/tasks", completed, title);
+            const res = await addWorkItem_jwtfn(
+                "/auth/jwt/tasks",
+                completed,
+                title,
+                `${token}`
+            );
 
             if (!res.success) {
                 toast({
@@ -33,7 +43,7 @@ export default function AddWorkPage() {
                     isClosable: true,
                 });
             } else {
-                navigate(`/aufgabe/${res.data?.id}`);
+                navigate(`/meine/aufgabe/${res.data?.id}`);
                 toast({
                     title: "Success",
                     status: "success",
@@ -53,9 +63,23 @@ export default function AddWorkPage() {
         setIsLoadingButton(false);
     };
 
+    useEffect(() => {
+        new Auth(
+            (e: Auth) => {
+                settoken(e.token);
+                if (!e.isAuth) {
+                    navigate("/login");
+                }
+            },
+            isAuth,
+            setIsAuth,
+            true
+        );
+    }, []);
+
     return (
         <>
-            <Link to={"/aufgaben"}>
+            <Link to={"/meine/aufgaben"}>
                 <IconButton
                     colorScheme={"blue"}
                     icon={<ArrowBackIcon />}

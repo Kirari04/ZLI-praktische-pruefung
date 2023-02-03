@@ -1,5 +1,4 @@
 import axios from "axios";
-import { UserContext } from "./hooks/_state";
 import _data from "./_data";
 
 interface UserData {
@@ -8,9 +7,9 @@ interface UserData {
 }
 
 export default class Auth {
-    public isAuth: boolean = false;
+    public isAuth = false;
     public token: string | null = null;
-    private storageKey: string = "auth";
+    private storageKey = "auth";
     public user: UserData = {
         email: null,
         iat: null,
@@ -19,7 +18,7 @@ export default class Auth {
         callback: Function,
         isAuth: boolean,
         setIsAuth: Function,
-        verify: boolean = true
+        verify = true
     ) {
         this.isAuth = isAuth;
         const currentToken = localStorage.getItem(this.storageKey);
@@ -38,12 +37,12 @@ export default class Auth {
             } else {
                 callback(this);
             }
-        }else{
+        } else {
             callback(this);
         }
     }
     private check(): Promise<boolean> {
-        return new Promise((resolve, reject) => {
+        return new Promise((resolve) => {
             axios
                 .get(`${_data.API}/auth/jwt/verify`, {
                     headers: {
@@ -55,7 +54,7 @@ export default class Auth {
                     this.user.iat = data.data.iat;
                     resolve(true);
                 })
-                .catch((err) => {
+                .catch(() => {
                     resolve(false);
                 });
         });
